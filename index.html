@@ -34,6 +34,8 @@
       zoom: 16,
     });
   
+  new L.TileLayer('http://{s}.tiles.mapbox.com/v4/pk.eyJ1IjoiYmxvb2ZlciIsImEiOiJjaW9hc2JzcjIwM25sdmlranY4dmV4ZTJiIn0.jC_kirEMwELyv0EoFmJv4Q/{z}/{x}/{y}.png'),
+    { attribution: 'Map tiles &copy; <a href="http://mapbox.com">MapBox</a>', maxZoom: 18 }).addTo(map);
     var slr = L.esri.dynamicMapLayer({ 
       url: 'http://csc-s-gis1-d:6080/arcgis/rest/services/Test/MA/MapServer',
       opacity: 0.7
