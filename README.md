@@ -1,3 +1,3 @@
 # webtest2
 
-joryfleming.github.io/webtest2
+http://joryfleming.github.io/webtest2
