@@ -1,136 +1,52 @@
-<!DOCTYPE html>
 <html>
 <head>
-  <title>OSM Buildings</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      height: 100%;
-    }
-    #map {
-      width: 100%;
-      height: 100%;
-    }
-    .control {
-      position: absolute;
-      left: 0;
-      z-index: 1000;
-    }
-    .control.tilt {
-      top: 0;
-    }
-    .control.rotation {
-      top: 45px;
-    }
-    .control.zoom {
-      top: 90px;
-    }
-    .control.zoom button{
-      font-weight: normal;
-    }
-    .control button {
-      width: 30px;
-      height: 30px;
-      margin: 15px 0 0 15px;
-      border: 1px solid #999999;
-      background: #ffffff;
-      opacity: 0.6;
-      border-radius: 5px;
-      box-shadow: 0 0 5px #666666;
-      font-weight: bold;
-      text-align: center;
-    }
-    .control button:hover {
-      opacity: 1;
-      cursor: pointer;
-    }
-  </style>
-  <link rel="stylesheet" href="scripts/OSMBuildings.css">
-  <script src="scripts/OSMBuildings.js"></script>
-</head>
+  <meta charset=utf-8 />
+  <title>SLR Testing</title>
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 
+  <!-- Load Leaflet from CDN-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.0-beta.2/leaflet.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.0-beta.2/leaflet.js"></script>
+
+  <!-- Load Esri Leaflet from CDN -->
+  <script src="https://cdn.jsdelivr.net/leaflet.esri/2.0.0/esri-leaflet.js"></script>
+  
+  <!-- Main tangram library -->
+  <script src="https://mapzen.com/tangram/0.4/tangram.min.js"></script>
+  
+  <!-- 3rd party libraries -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <!-- bog-standard leaflet URL hash -->
+  <script src="lib/leaflet-hash.js"></script>
+  
+  <script src="scripts/OSMBuildings-Leaflet.js"></script>
+
+  <style>
+    body { margin:0; padding:0; }
+    #map { position: absolute; top:0; bottom:0; right:0; left:0; }
+  </style>
+</head>
 <body>
   <div id="map"></div>
-  
-  <div class="control tilt">
-    <button class="dec">&#8601;</button>
-    <button class="inc">&#8599;</button>
-  </div>
-  
-  <div class="control rotation">
-    <button class="inc">&#8630;</button>
-    <button class="dec">&#8631;</button>
-  </div>
-  
-  <div class="control zoom">
-    <button class="dec">-</button>
-    <button class="inc">+</button>
-  </div>
-  
   <script>
-    var map = new GLMap('map', {
-      position: { latitude: 42.359707, longitude: -71.054964 },
+    var map = L.map('map',{
+      center: [42.364423, -71.055261], 
       zoom: 16,
-      minZoom: 12,
-      maxZoom: 22,
-      state: true // stores map position/rotation in url
     });
-    var osmb = new OSMBuildings({
-      baseURL: './OSMBuildings',
-      minZoom: 12,
-      maxZoom: 22,
-      effects: ['shadows'],
-      attribution: '© 3D <a href="https://osmbuildings.org/copyright/">OSM Buildings</a>'
+  
+
+    var osm = Tangram.leafletLayer({
+      scene: 'scene.yaml',
+      attribution: '<a href="https://mapzen.com/tangram" target="_blank">Tangram</a> | &copy; OSM contributors | <a href="https://mapzen.com/" target="_blank">Mapzen</a>'
+    });
+  
+    var slr = L.esri.dynamicMapLayer({ 
+      url: 'http://csc-s-gis1-d:6080/arcgis/rest/services/Test/MA/MapServer',
+      opacity: 0.7
     }).addTo(map);
-    osmb.addMapTiles(
-      'https://{s}.tiles.mapbox.com/v3/osmbuildings.kbpalbpk/{z}/{x}/{y}.png',
-      {
-        attribution: '© Data <a href="https://openstreetmap.org/copyright/">OpenStreetMap</a> · © Map <a href="http://mapbox.com">Mapbox</a>'
-      }
-    );
-    osmb.addGeoJSONTiles('https://{s}.data.osmbuildings.org/0.2/anonymous/tile/{z}/{x}/{y}.json');
-    //***************************************************************************
-    map.on('pointermove', function(e) {
-      var id = osmb.getTarget(e.x, e.y, function(id) {
-        if (id) {
-          document.body.style.cursor = 'pointer';
-          osmb.highlight(id, '#f08000');
-        } else {
-          document.body.style.cursor = 'default';
-          osmb.highlight(null);
-        }
-      });
-    });
-    //***************************************************************************
-    var controlButtons = document.querySelectorAll('.control button');
-    for (var i = 0, il = controlButtons.length; i < il; i++) {
-      controlButtons[i].addEventListener('click', function(e) {
-        var button = this;
-        var parentClassList = button.parentNode.classList;
-        var direction = button.classList.contains('inc') ? 1 : -1;
-        var increment;
-        var property;
-        if (parentClassList.contains('tilt')) {
-          property = 'Tilt';
-          increment = direction*10;
-        }
-        if (parentClassList.contains('rotation')) {
-          property = 'Rotation';
-          increment = direction*10;
-        }
-        if (parentClassList.contains('zoom')) {
-          property = 'Zoom';
-          increment = direction*1;
-        }
-        if (property) {
-          map['set'+ property](map['get'+ property]()+increment);
-        }
-      });
-    }
+  
+
   </script>
+
 </body>
 </html>
