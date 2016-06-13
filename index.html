@@ -73,15 +73,15 @@
 
 <script>
   var map = new GLMap('map', {
-    position: { latitude:42.359707, longitude:-71.054964 },
+    position: { latitude: 42.359707, longitude: -71.054964 },
     zoom: 16,
     minZoom: 12,
-    maxZoom: 20,
+    maxZoom: 22,
     state: true // stores map position/rotation in url
   });
   var osmb = new OSMBuildings({
     baseURL: './OSMBuildings',
-    minZoom: 15,
+    minZoom: 12,
     maxZoom: 22,
     effects: ['shadows'],
     attribution: '© 3D <a href="https://osmbuildings.org/copyright/">OSM Buildings</a>'
@@ -132,11 +132,5 @@
     });
   }
 </script>
-</body>
-</html>
-
-  osmb.addGeoJSONTiles('http://{s}.data.osmbuildings.org/0.2/anonymous/tile/{z}/{x}/{y}.json');
-  </script>
-
 </body>
 </html>
