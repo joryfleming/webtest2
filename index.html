@@ -23,12 +23,14 @@
   <div id="map"></div>
   <script>
     var map = L.Map('map').setView([42.364423, -71.055261],16);
+    
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
       attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
       maxZoom: 18,
       id: 'mapbox.streets',
       accessToken: 'pk.eyJ1IjoiYmxvb2ZlciIsImEiOiJjaW9hc2JzcjIwM25sdmlranY4dmV4ZTJiIn0.jC_kirEMwELyv0EoFmJv4Q'
-    }).addTo(mymap);
+    }).addTo(map);
+    
     var slr = L.esri.dynamicMapLayer({ 
       url: 'http://csc-s-gis1-d:6080/arcgis/rest/services/Test/MA/MapServer',
       opacity: 0.7
