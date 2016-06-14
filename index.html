@@ -19,11 +19,11 @@
 <body>
   <div id='map'></div>
   <script>
-    L.mapbox.accessToken = 'pk.eyJ1IjoiYmxvb2ZlciIsImEiOiJjaW9hc2JzcjIwM25sdmlranY4dmV4ZTJiIn0.jC_kirEMwELyv0EoFmJv4Q';
+   // L.mapbox.accessToken = 'pk.eyJ1IjoiYmxvb2ZlciIsImEiOiJjaW9hc2JzcjIwM25sdmlranY4dmV4ZTJiIn0.jC_kirEMwELyv0EoFmJv4Q';
     // Replace 'mapbox.streets' with your map id.
-    var mapboxTiles = L.tileLayer('https://api.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=' + L.mapbox.accessToken, {
-        attribution: '© <a href="https://www.mapbox.com/map-feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    });
+  //  var mapboxTiles = L.tileLayer('https://api.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=' + L.mapbox.accessToken, {
+    //    attribution: '© <a href="https://www.mapbox.com/map-feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  //  });
     var map = L.map('map')
       //  .addLayer(mapboxTiles)
         .setView([42.3610, -71.0587], 15);
