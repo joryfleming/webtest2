@@ -25,10 +25,10 @@
      //   attribution: '© <a href="https://www.mapbox.com/map-feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
   //  });
     var map = L.map('map').setView([42.3610, -71.0587], 15);
-    var slr = L.esri.dynamicMapLayer({
-      url: 'http://csc-s-gis1-d:6080/arcgis/rest/services/Test/MA/MapServer',
-      opacity: 0.7
-    }).addTo(map);
+  //  var slr = L.esri.dynamicMapLayer({
+  //    url: 'http://csc-s-gis1-d:6080/arcgis/rest/services/Test/MA/MapServer',
+  //    opacity: 0.7
+  //  }).addTo(map);
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
