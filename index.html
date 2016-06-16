@@ -15,6 +15,18 @@
   <style>
     body { margin:0; padding:0; }
     #map { position:absolute; top:0; bottom:0; width:100%; }
+    
+    .legend {
+      line-height: 18px;
+      color: #555;
+    }
+    .legend i {
+      width: 18px;
+      height: 18px;
+      float: left;
+      margin-right: 8px;
+      opacity: 0.7;
+    }
   </style>
 </head>
 <body>
@@ -58,6 +70,22 @@
     var osmb = new OSMBuildings(map).load();
     // format is .set(geoJson feature collection)
     //new OSMBuildings(map).set({esri_slr});
+    
+    // add a legend
+    var legend = L.control({position: 'bottomright'});
+    legend.onAdd = function(map) {
+      var div = L.DomUtil.create('div', 'info legend'),
+        grades = [0, 2, 4, 6, 8, 10, 20],
+        color = ['#c6dbef','#9ecae1','#6baed6','#4292c6','#2171b5','#084594'],
+        labels = [];
+      for (var i = 0; i < grades.length; i++) {
+        div.innerHTML +=
+            '<i style="background:' + color[i] + '"></i> ' +
+            grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+      }
+      return div;
+    }
+    legend.addTo(map)
   </script>
 </body>
 </html>
