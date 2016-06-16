@@ -54,10 +54,10 @@
     var esri_slr = L.esri.dynamicMapLayer({
       url: 'http://csc-s-gis1-d:6080/arcgis/rest/services/Test/New_England/MapServer',
       opacity: 0.7
-    });
+    }).addTo(map);
     var osmb = new OSMBuildings(map).load();
     // format is osmb.set(geoJson)
-    osmb.set(esri_slr);
+    // osmb.set(esri_slr);
   </script>
 </body>
 </html>
