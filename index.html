@@ -38,17 +38,18 @@
     var mapboximagery = L.tileLayer('https://api.mapbox.com/v4/mapbox.satellite/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiYmxvb2ZlciIsImEiOiJjaW9hc2JzcjIwM25sdmlranY4dmV4ZTJiIn0.jC_kirEMwELyv0EoFmJv4Q', {
       attribution: '© <a href="https://www.mapbox.com/map-feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     });
+
+    var map = L.map('map', {
+      center: [42.3610, -71.0587],
+      zoom: 16,
+      layers: [mapboxstreet]
+    });
     var baseMaps = {
       "Streets": mapboxstreet
       "Basic": mapboxgray
       "Natural": mapboxoutdoor
       "Imagery": mapboximagery
     };    
-    var map = L.map('map', {
-      center: [42.3610, -71.0587],
-      zoom: 16,
-      layers: [mapboxstreet]
-    });
     L.control.layers(baseMaps).addTo(map);
     var slr = L.esri.dynamicMapLayer({
       url: 'http://csc-s-gis1-d:6080/arcgis/rest/services/Test/New_England/MapServer',
