@@ -36,7 +36,12 @@
     var osmb = new OSMBuildings(map).load();
     
     
-    L.geoJson(slr).addTo(map);
+    function setGeoJSON() {
+      try {
+        var geoJson = JSON.parse(slr.value);
+      } catch(e) {}
+      osmb.set(geoJson);
+    }
     setGeoJSON();
 
   </script>
