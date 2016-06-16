@@ -84,6 +84,28 @@
     // format is .set(geoJson feature collection)
     //new OSMBuildings(map).set({esri_slr});
     
+    var legend = L.control({position: 'topleft'});  
+    legend.onAdd = function (map) {
+
+    var div = L.DomUtil.create('div', 'info legend'),
+        grades = [50, 100, 150, 200, 250, 300],
+        color = ['#c6dbef','#9ecae1','#6baed6','#4292c6','#2171b5','#084594']
+        labels = ['<strong> Sea Level Rise (m) </strong>'],
+        from, to;
+
+    for (var i = 0; i < grades.length; i++) {
+        from = grades [i];
+        to = grades[i+1]-1;
+
+    labels.push(
+        '<i style="background:' + color[i + 1] + '"></i> ' +
+        from + (to ? '&ndash;' + to : '+'));
+        }
+        div.innerHTML = labels.join('<br>');
+        return div;
+    legend.addTo(map);
+
+        };
     // add a legend
     var legend = L.control({position: 'bottomright'});
     legend.onAdd = function(map) {
@@ -98,7 +120,6 @@
       }
       return div;
     }
-    legend.addTo(map)
   </script>
 </body>
 </html>
