@@ -92,8 +92,7 @@
     }).done(function (esriJson) {
       geoJson =  esriConverter().toGeoJson(esriJson);
       // format is new OSMBuildings(map).set(geoJson feature collection)
-      var slr = new OSMBuildings(map).set(geoJson);
-      slr.setStyle({ 
+      var slr = new OSMBuildings(map).set(geoJson).setStyle({ 
        wallColor:'rgba(100, 100, 250, 0.701961)', 
        roofColor:'rgb(220, 220, 50)', 
        shadows:true 
