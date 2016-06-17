@@ -80,9 +80,9 @@
       url: 'http://csc-s-gis1-d:6080/arcgis/rest/services/Test/New_England/MapServer',
       opacity: 0.7
     });
-    var osmb = new OSMBuildings(map).load();
+    var osmb = new OSMBuildings(map).load().set(esri_slr);
     // format is new OSMBuildings(map).set(geoJson feature collection)
-    new OSMBuildings(map).set(esri_slr);
+    // new OSMBuildings(map).set(esri_slr);
 
     // add a legend
     var legend = L.control({position: 'bottomright'});
