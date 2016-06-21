@@ -100,7 +100,7 @@
       console.log(geoJson);
     });
     var OSMBLayer = new OSMBuildings(map).setData(geoJson).setStyle({ roofColor: "#9ecae1", wallColor: "#9ecae1" });
-
+    //
     // add a legend
     var legend = L.control({position: 'bottomright'});
     legend.onAdd = function(map) {
