@@ -90,8 +90,8 @@
 
     $.getJSON( "http://csc-s-gis1-d:6080/arcgis/rest/services/Test/New_England/MapServer/4/query?where=1%3D1&text=&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=*&returnGeometry=true&returnTrueCurves=false&maxAllowableOffset=&geometryPrecision=&outSR=&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&returnDistinctValues=false&resultOffset=&resultRecordCount=&f=pjson", function() {
     }).done(function (esriJson) {
-      var geoJson =  esriConverter().toGeoJson(esriJson);
-      var OSMBLayer = new OSMBuildings(map).setData(geoJson).setStyle({ roofColor: "#9ecae1", wallColor: "#9ecae1" });
+      geoJson =  esriConverter().toGeoJson(esriJson);
+      OSMBLayer = new OSMBuildings(map).setData(geoJson).setStyle({ roofColor: "#9ecae1", wallColor: "#9ecae1" });
       // format is new OSMBuildings(map).set(geoJson feature collection)
     //  var slr = new OSMBuildings(map).set(geoJson).setStyle({ 
     //   wallColor:'rgba(100, 100, 250, 0.701961)', 
