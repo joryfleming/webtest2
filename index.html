@@ -88,7 +88,7 @@
 
    var osmb = new OSMBuildings(map).load();
 
-    $.getJSON( "http://csc-s-gis1-d:6080/arcgis/rest/services/Test/New_England/MapServer/0/query?where=1%3D1&text=&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=&returnGeometry=true&returnTrueCurves=false&maxAllowableOffset=&geometryPrecision=&outSR=&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&returnDistinctValues=false&resultOffset=&resultRecordCount=&f=pjson", function() {
+    $.getJSON( "http://csc-s-gis1-d:6080/arcgis/rest/services/Test/New_England/MapServer/4/query?where=1%3D1&text=&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=*&returnGeometry=true&returnTrueCurves=false&maxAllowableOffset=&geometryPrecision=&outSR=&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&returnDistinctValues=false&resultOffset=&resultRecordCount=&f=pjson", function() {
     }).done(function (esriJson) {
       geoJson =  esriConverter().toGeoJson(esriJson);
       // format is new OSMBuildings(map).set(geoJson feature collection)
@@ -99,6 +99,7 @@
     //  });
       console.log(geoJson);
     });
+    var OSMBLayer = new OSMBuildings(map).setData(geoJson).setStyle({ roofColor: "#9ecae1", wallColor: "#9ecae1" });
 
     // add a legend
     var legend = L.control({position: 'bottomright'});
