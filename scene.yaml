@@ -34,4 +34,4 @@ layers:
             polygons:
                 order: 1
                 color: '#003366'
-                extrude: true
+                extrude: 30
