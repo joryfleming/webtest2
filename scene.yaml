@@ -33,5 +33,5 @@ layers:
         draw:
             polygons:
                 order: 1
-                color: feature.color
+                color: '#003366'
                 extrude: true
