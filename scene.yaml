@@ -24,7 +24,7 @@ sources:
         max_zoom: 20
     NOAA:
         type: GeoJSON
-        url: file.json
+        url: slr.json
         max_zoom: 20
 
 layers:
