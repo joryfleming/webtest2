@@ -100,10 +100,11 @@
     //  new OSMBuildings(map).set(geoJson);
     // ^^^ code won't load, also crashes original bldgs
       console.log(geoJson);
+      var intersection = turf.intersect(geoJson, osmb);
+      console.log(intersection);
     });
     
-    var intersection = turf.intersect(geoJson, osmb);
-    console.log(intersection);
+
     //
     // add a legend
     var legend = L.control({position: 'bottomright'});
