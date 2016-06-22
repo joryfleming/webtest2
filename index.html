@@ -84,14 +84,14 @@
     var esri_slr = L.esri.dynamicMapLayer({
       url: 'http://csc-s-gis1-d:6080/arcgis/rest/services/Test/New_England/MapServer',
       opacity: 0.7
-    }).addTo(map);
+    });
 
-   var osmb = new OSMBuildings(map).load();
+  // var osmb = new OSMBuildings(map).load();
 
     $.getJSON( "http://csc-s-gis1-d:6080/arcgis/rest/services/Test/New_England/MapServer/4/query?where=1%3D1&text=&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=height%2CminHeight%2Ccolor%2CroofColor&returnGeometry=true&returnTrueCurves=false&maxAllowableOffset=&geometryPrecision=&outSR=4326&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&returnDistinctValues=false&resultOffset=&resultRecordCount=&f=pjson", function() {
     }).done(function (esriJson) {
       geoJson =  esriConverter().toGeoJson(esriJson);
-    //  new OSMBuildings(map).set(geoJson);
+      new OSMBuildings(map).set(geoJson);
     // ^^^ code won't load, also crashes original bldgs
       console.log(geoJson);
     });
