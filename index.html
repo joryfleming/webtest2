@@ -89,8 +89,8 @@
       opacity: 0.7
     }).addTo(map);
     
-    $.getJSON( "http://bostonopendata.boston.opendata.arcgis.com/datasets/092857c15cbb49e8b214ca5e228317a1_2.geojson", function(data) {
-      var geojsonMarkerOptions = {
+    $.getJSON( "http://bostonopendata.boston.opendata.arcgis.com/datasets/092857c15cbb49e8b214ca5e228317a1_2.geojson", function(fire) {
+      var geojsonMarkerOptions1 = {
         radius: 12,
         fillColor: "#e41a1c",
         color: "#e41a1c",
@@ -98,14 +98,14 @@
         opacity: 1,
         fillOpacity:0.9
       };
-      L.geoJson(data, {
+      L.geoJson(fire, {
         pointToLayer: function(feature,latlng){
-          return L.circleMarker(latlng,geojsonMarkerOptions);
+          return L.circleMarker(latlng,geojsonMarkerOptions1);
         }
       }).addTo(map);
     });
-    $.getJSON( "http://bostonopendata.boston.opendata.arcgis.com/datasets/e5a0066d38ac4e2abbc7918197a4f6af_6.geojson", function(data) {
-      var geojsonMarkerOptions = {
+    $.getJSON( "http://bostonopendata.boston.opendata.arcgis.com/datasets/e5a0066d38ac4e2abbc7918197a4f6af_6.geojson", function(police) {
+      var geojsonMarkerOptions2 = {
         radius: 12,
         fillColor: "#377eb8",
         color: "#377eb8",
@@ -113,14 +113,14 @@
         opacity: 1,
         fillOpacity:0.9
       };
-      L.geoJson(data, {
+      L.geoJson(police, {
         pointToLayer: function(feature,latlng){
-          return L.circleMarker(latlng,geojsonMarkerOptions);
+          return L.circleMarker(latlng,geojsonMarkerOptions2);
         }
       }).addTo(map);
     });
-    $.getJSON( "http://bostonopendata.boston.opendata.arcgis.com/datasets/1d9509a8b2fd485d9ad471ba2fdb1f90_0.geojson", function(data) {
-      var geojsonMarkerOptions = {
+    $.getJSON( "http://bostonopendata.boston.opendata.arcgis.com/datasets/1d9509a8b2fd485d9ad471ba2fdb1f90_0.geojson", function(school1) {
+      var geojsonMarkerOptions3 = {
         radius: 12,
         fillColor: "#4daf4a",
         color: "#4daf4a",
@@ -128,14 +128,14 @@
         opacity: 1,
         fillOpacity:0.9
       };
-      L.geoJson(data, {
+      L.geoJson(school1, {
         pointToLayer: function(feature,latlng){
-          return L.circleMarker(latlng,geojsonMarkerOptions);
+          return L.circleMarker(latlng,geojsonMarkerOptions3);
         }
       }).addTo(map);
     });
-    $.getJSON( "http://bostonopendata.boston.opendata.arcgis.com/datasets/0046426a3e4340a6b025ad52b41be70a_1.geojson", function(data) {
-      var geojsonMarkerOptions = {
+    $.getJSON( "http://bostonopendata.boston.opendata.arcgis.com/datasets/0046426a3e4340a6b025ad52b41be70a_1.geojson", function(school2) {
+      var geojsonMarkerOptions4 = {
         radius: 12,
         fillColor: "#4daf4a",
         color: "#4daf4a",
@@ -143,9 +143,9 @@
         opacity: 1,
         fillOpacity:0.9
       };
-      L.geoJson(data, {
+      L.geoJson(school2, {
         pointToLayer: function(feature,latlng){
-          return L.circleMarker(latlng,geojsonMarkerOptions);
+          return L.circleMarker(latlng,geojsonMarkerOptions4);
         }
       }).addTo(map);
     });
