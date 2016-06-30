@@ -97,7 +97,8 @@
         opacity: 1
         fillOpacity:0.8
       };
-      var fire = (data, {
+      var fff = L.geoJson(data);
+      var fire = (fff, {
         pointToLayer: function (feature, latlng) {
           return L.circleMarker(latlng, marker)
         };
