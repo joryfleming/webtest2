@@ -66,7 +66,7 @@
     });
     var mapboxstreet = L.tileLayer('https://api.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiYmxvb2ZlciIsImEiOiJjaW9hc2JzcjIwM25sdmlranY4dmV4ZTJiIn0.jC_kirEMwELyv0EoFmJv4Q', {
       attribution: '© <a href="https://www.mapbox.com/map-feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    });
+    }).addTo(map);
     var mapboxgray = L.tileLayer('https://api.mapbox.com/v4/mapbox.dark/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiYmxvb2ZlciIsImEiOiJjaW9hc2JzcjIwM25sdmlranY4dmV4ZTJiIn0.jC_kirEMwELyv0EoFmJv4Q', {
       attribution: '© <a href="https://www.mapbox.com/map-feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     });
@@ -83,11 +83,17 @@
       "Imagery": mapboximagery,
     };    
     L.control.layers(baseMaps).addTo(map);
-    L.esri.basemapLayer('Streets').addTo(map);
+  //  L.esri.basemapLayer('Streets').addTo(map);
     var esri_slr = L.esri.dynamicMapLayer({
       url: 'http://csc-s-gis1-d:6080/arcgis/rest/services/Test/New_England/MapServer',
       opacity: 0.7
     }).addTo(map);
+    
+  $.getJSON( "http://bostonopendata.boston.opendata.arcgis.com/datasets/092857c15cbb49e8b214ca5e228317a1_2.geojson", function() {
+    }).done(function (data) {
+    L.geoJson(data).addTo(map)
+    });
+    
     var fire = L.esri.featureLayer({
       url: 'http://gis.cityofboston.gov/arcgis/rest/services/PublicSafety/OpenData/MapServer/2/query?outFields=*&where=1%3D1',
     }).addTo(map);
