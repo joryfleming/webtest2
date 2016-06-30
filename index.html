@@ -88,21 +88,33 @@
       url: 'http://csc-s-gis1-d:6080/arcgis/rest/services/Test/New_England/MapServer',
       opacity: 0.7
     }).addTo(map);
-    var tangram = Tangram.leafletLayer({
-      scene: 'scene.yaml',
-      attribution: '<a href="https://mapzen.com/tangram" target="_blank">Tangram</a>'
-    });
+    var fire = L.esri.dynamicMapLayer({
+      url: 'http://gis.cityofboston.gov/arcgis/rest/services/PublicSafety/OpenData/MapServer/2/query?outFields=*&where=1%3D1',
+      opacity: 1
+    }).addTo(map);
+    var schools = L.esri.dynamicMapLayer({
+      url: 'http://gis.cityofboston.gov/arcgis/rest/services/Education/OpenData/MapServer/0/query?outFields=*&where=1%3D1',
+      opacity: 1
+    }).addTo(map);
+    var police = L.esri.dynamicMapLayer({
+      url: 'http://gis.cityofboston.gov/arcgis/rest/services/PublicSafety/OpenData/MapServer/6/query?outFields=*&where=1%3D1',
+      opacity: 1
+    }).addTo(map);
+  //  var tangram = Tangram.leafletLayer({
+  //    scene: 'scene.yaml',
+  //    attribution: '<a href="https://mapzen.com/tangram" target="_blank">Tangram</a>'
+  //  });
     var osmb = new OSMBuildings(map).load();
 
-    $.getJSON( "http://csc-s-gis1-d:6080/arcgis/rest/services/Test/New_England/MapServer/4/query?where=1%3D1&text=&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=height%2CminHeight%2Ccolor%2CroofColor&returnGeometry=true&returnTrueCurves=false&maxAllowableOffset=&geometryPrecision=&outSR=4326&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&returnDistinctValues=false&resultOffset=&resultRecordCount=&f=pjson", function() {
-    }).done(function (esriJson) {
-      var geoJson =  esriConverter().toGeoJson(esriJson);
+  //  $.getJSON( "http://csc-s-gis1-d:6080/arcgis/rest/services/Test/New_England/MapServer/4/query?where=1%3D1&text=&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=height%2CminHeight%2Ccolor%2CroofColor&returnGeometry=true&returnTrueCurves=false&maxAllowableOffset=&geometryPrecision=&outSR=4326&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&returnDistinctValues=false&resultOffset=&resultRecordCount=&f=pjson", function() {
+  //  }).done(function (esriJson) {
+  //    var geoJson =  esriConverter().toGeoJson(esriJson);
     //  new OSMBuildings(map).set(geoJson);
     // ^^^ code won't load, also crashes original bldgs
-      console.log(geoJson);
-      var intersection = turf.intersect(geoJson, osmb);
-      console.log(intersection);
-    });
+  //    console.log(geoJson);
+  //    var intersection = turf.intersect(geoJson, osmb);
+  //    console.log(intersection);
+  //  });
     
 
     //
