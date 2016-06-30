@@ -98,11 +98,6 @@
         fillOpacity:0.8
       };
       var fff = L.geoJson(data).addTo(map);
-      var fire = (fff, {
-        pointToLayer: function (feature, latlng) {
-          return L.circleMarker(latlng, marker)
-        };
-      }).addTo(map);
     });
       
   //  var tangram = Tangram.leafletLayer({
