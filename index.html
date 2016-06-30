@@ -104,11 +104,51 @@
         }
       }).addTo(map);
     });
-      
-  //  var tangram = Tangram.leafletLayer({
-  //    scene: 'scene.yaml',
-  //    attribution: '<a href="https://mapzen.com/tangram" target="_blank">Tangram</a>'
-  //  });
+    $.getJSON( "http://bostonopendata.boston.opendata.arcgis.com/datasets/e5a0066d38ac4e2abbc7918197a4f6af_6.geojson", function(data) {
+      var geojsonMarkerOptions = {
+        radius: 12,
+        fillColor: "#377eb8",
+        color: "#377eb8",
+        weight: 1,
+        opacity: 1,
+        fillOpacity:0.9
+      };
+      L.geoJson(data, {
+        pointToLayer: function(feature,latlng){
+          return L.circleMarker(latlng,geojsonMarkerOptions);
+        }
+      }).addTo(map);
+    });
+    $.getJSON( "http://bostonopendata.boston.opendata.arcgis.com/datasets/1d9509a8b2fd485d9ad471ba2fdb1f90_0.geojson", function(data) {
+      var geojsonMarkerOptions = {
+        radius: 12,
+        fillColor: "#4daf4a",
+        color: "#4daf4a",
+        weight: 1,
+        opacity: 1,
+        fillOpacity:0.9
+      };
+      L.geoJson(data, {
+        pointToLayer: function(feature,latlng){
+          return L.circleMarker(latlng,geojsonMarkerOptions);
+        }
+      }).addTo(map);
+    });
+    $.getJSON( "http://bostonopendata.boston.opendata.arcgis.com/datasets/0046426a3e4340a6b025ad52b41be70a_1.geojson", function(data) {
+      var geojsonMarkerOptions = {
+        radius: 12,
+        fillColor: "#4daf4a",
+        color: "#4daf4a",
+        weight: 1,
+        opacity: 1,
+        fillOpacity:0.9
+      };
+      L.geoJson(data, {
+        pointToLayer: function(feature,latlng){
+          return L.circleMarker(latlng,geojsonMarkerOptions);
+        }
+      }).addTo(map);
+    });
     var osmb = new OSMBuildings(map).load();
 
   //  $.getJSON( "http://csc-s-gis1-d:6080/arcgis/rest/services/Test/New_England/MapServer/4/query?where=1%3D1&text=&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=height%2CminHeight%2Ccolor%2CroofColor&returnGeometry=true&returnTrueCurves=false&maxAllowableOffset=&geometryPrecision=&outSR=4326&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&returnDistinctValues=false&resultOffset=&resultRecordCount=&f=pjson", function() {
